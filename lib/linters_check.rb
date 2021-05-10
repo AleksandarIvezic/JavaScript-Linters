@@ -31,8 +31,12 @@ class Linter_check
         end
     end
 
-    def check_space_trailing
-
+        # check if there is a space before new line
+    def check_space_trailing 
+        @lines.each_with_index do |line, i|
+            line_arr = line.split("")
+            @errors << "You have white space at the end of the line #{i}" if line_arr[-2] == " "
+        end
     end
 
     def check_new_lines
@@ -49,5 +53,5 @@ end
 varbla = Linter_check.new("js_test.js")
 # buffer = StringScanner.new(varbla.lines[0])
 # p buffer
-varbla.check_indentation
+varbla.check_space_trailing 
 p varbla.errors
