@@ -7,7 +7,7 @@ const score =10;
 //Strings, Numbers, Boolean, null, undefined
 
 
-const name = "John";
+const name = "John";  
 const age = 30;
 const rating = 4.5;
 const isCool = true;
