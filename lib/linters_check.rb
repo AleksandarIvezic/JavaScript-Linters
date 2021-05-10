@@ -46,6 +46,34 @@ class Linter_check
     end
 
     def check_tags
+        @tags = {
+            "curly_braces" => 0,
+            "brackets" => 0,
+            "braces" => 0
+        }
+        @lines.each_with_index do |line, i|
+            line_arr = line.split("")
+            line_arr.each do |char|
+                if char.match("{")
+                    @tags["curly_braces"] +=1 
+                elsif char.match("}")
+                    @tags["curly_braces"] -=1 
+                elsif char.match(/\[/)
+                    @tags["brackets"] +=1 
+                elsif char.match(/\]/)
+                    @tags["brackets"] -=1 
+                elsif char.match(/\(/)
+                    @tags["braces"] +=1 
+                elsif char.match(/\)/)
+                    @tags["braces"] -=1 
+                end
+            end
+        end
+        p @tags
+        @tags.each do |key, val|
+            @errors << "You are missing closing #{key}" if  val >0
+            @errors << "You are missing openning #{key}" if val <0
+        end
 
     end
 
@@ -55,5 +83,5 @@ end
 varbla = Linter_check.new("js_test.js")
 # buffer = StringScanner.new(varbla.lines[0])
 # p buffer
-varbla.check_new_lines
+varbla.check_tags
 p varbla.errors

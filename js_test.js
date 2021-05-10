@@ -40,7 +40,7 @@ console.log(color);
 
 //Switch
 color = "green";
-switch (color) {
+switch (color) 
     case "red":
         console.log('color is red');
         break;
