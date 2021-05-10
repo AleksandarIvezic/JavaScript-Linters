@@ -35,12 +35,14 @@ class Linter_check
     def check_space_trailing 
         @lines.each_with_index do |line, i|
             line_arr = line.split("")
-            @errors << "You have white space at the end of the line #{i}" if line_arr[-2] == " "
+            @errors << "You have white space at the end of the line #{i+1}" if line_arr[-2] == " "
         end
     end
 
     def check_new_lines
-
+        @lines.each_with_index do |line, i|
+            @errors << "You have new line error on the line #{i+1}" if lines[i-1] == "\n" && line == "\n"
+        end
     end
 
     def check_tags
@@ -53,5 +55,5 @@ end
 varbla = Linter_check.new("js_test.js")
 # buffer = StringScanner.new(varbla.lines[0])
 # p buffer
-varbla.check_space_trailing 
+varbla.check_new_lines
 p varbla.errors
