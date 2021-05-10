@@ -77,11 +77,22 @@ class Linter_check
 
     end
 
+    # def check_white_spaces
+    #     @lines.each_with_index do |line, i|
+    #         line_arr = line.split("")
+    #         @error_regexp = /^\w+[\s\s]$/
+    #             puts "matching #{i+1}" if @error_regexp.match(line)
+    #         line_arr.each do |char|
+                
+    #         end
+    #     end
+    # end
+
 end   
 
 
 varbla = Linter_check.new("js_test.js")
 # buffer = StringScanner.new(varbla.lines[0])
 # p buffer
-varbla.check_tags
-p varbla.errors
+varbla.check_white_spaces
+# p varbla.errors
