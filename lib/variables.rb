@@ -31,8 +31,3 @@ class Variables
     end
     
 end
-
-varijabla = Variables.new ('js_test.js')
-varijabla.create_variables
-p varijabla.all_vars
-p varijabla.repeats?

@@ -28,6 +28,7 @@ class LinterCheck
       check_tags(line, i)
     end
     tag_error
+    check_variables
   end
 
   def check_indent(line, idx)
@@ -77,7 +78,7 @@ class LinterCheck
 
  
   def check_variables 
-    @errors << "Error msg" if @variables.repeats?
+    @errors << "Error: Declaring same variable multiple times" if @variables.repeats?
   end
 
 end
