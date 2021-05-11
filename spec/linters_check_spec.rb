@@ -1,6 +1,6 @@
 require 'rspec'
 require_relative '../lib/linters_check'
-require "colorize"
+require 'colorize'
 
 describe LinterCheck do
   subject { described_class.new('js_test.js') }
