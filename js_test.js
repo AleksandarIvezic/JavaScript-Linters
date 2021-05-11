@@ -14,4 +14,3 @@ const person = {
         state: "ma"
     
 }
-

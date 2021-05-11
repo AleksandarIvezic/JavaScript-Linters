@@ -5,17 +5,17 @@ describe LinterCheck do
     subject {described_class.new("js_test.js")}
     describe "#initialize " do
         context "When argument is missing" do
-            it "Throws error" do
+            it "Raise an error" do
                 expect {described_class.new}.to raise_error(ArgumentError)
             end
         end
     end
     describe "#check_indent" do
         context "when arguments are missing" do
-            it "Throws error for 1 missing argument" do
+            it "Raise an error for 1 missing argument" do
                 expect{subject.check_indent(20)}.to raise_error(ArgumentError)
             end
-            it "Throws error for 2 missing argument" do
+            it "Raise an error for 2 missing argument" do
                 expect{subject.check_indent}.to raise_error(ArgumentError)
             end
         end
@@ -27,10 +27,10 @@ describe LinterCheck do
     end
     describe "#check_space_trailing" do
         context "when arguments are missing" do
-            it "Throws error for 1 missing argument" do
+            it "Raise an error for 1 missing argument" do
                 expect{subject.check_space_trailing(20)}.to raise_error(ArgumentError)
             end
-            it "Throws error for 2 missing argument" do
+            it "Raise an error for 2 missing argument" do
                 expect{subject.check_space_trailing}.to raise_error(ArgumentError)
             end
         end
@@ -42,10 +42,10 @@ describe LinterCheck do
     end
     describe "#check_new_lines" do
         context "when arguments are missing" do
-            it "Throws error for 1 missing argument" do
+            it "Raise an error for 1 missing argument" do
                 expect{subject.check_new_lines(20)}.to raise_error(ArgumentError)
             end
-            it "Throws error for 2 missing argument" do
+            it "Raise an error for 2 missing argument" do
                 expect{subject.check_new_lines}.to raise_error(ArgumentError)
             end
         end
@@ -57,10 +57,10 @@ describe LinterCheck do
     end
     describe "#check_tags" do
         context "when arguments are missing" do
-            it "Throws error for 1 missing argument" do
+            it "Raise an error for 1 missing argument" do
                 expect{subject.check_tags(20)}.to raise_error(ArgumentError)
             end
-            it "Throws error for 2 missing argument" do
+            it "Raise an error for 2 missing argument" do
                 expect{subject.check_tags}.to raise_error(ArgumentError)
             end
         end

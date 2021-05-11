@@ -5,6 +5,7 @@ class Variables
         @all_vars = all_vars
         @file = Parser.new(file)
         @lines = @file.lines
+        create_variables
     end
 
     def add_variable (name, line)
@@ -27,7 +28,7 @@ class Variables
         @all_vars.each_value do |val|
             values << val
         end
-        values.uniq.length == values.length
+        values.uniq.length != values.length
     end
     
 end
