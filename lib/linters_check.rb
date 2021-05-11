@@ -1,4 +1,5 @@
 # require_relative "indentation"
+require_relative "variables"
 require_relative 'parser'
 class LinterCheck
   attr_reader :file, :buffer, :lines, :errors
@@ -7,6 +8,7 @@ class LinterCheck
     @path = path
     @file = Parser.new(@path)
     @lines = @file.lines
+    @variables = Variables.new(@path)
     @errors = []
     @ind = 0
     @tags = {
@@ -19,6 +21,7 @@ class LinterCheck
 
   def run_check
     @lines.each_with_index do |line, i|
+
       check_indent(line, i)
       check_new_lines(line, i)
       check_space_trailing(line, i)
@@ -44,16 +47,12 @@ class LinterCheck
 
   # check if there is a space before new line
   def check_space_trailing(line, idx)
-    # @lines.each_with_index do |line, i|
     line_arr = line.split('')
     @errors << "You have white space at the end of the line #{idx + 1}" if line_arr[-2] == ' '
-    # end
   end
 
   def check_new_lines(line, idx)
-    # @lines.each_with_index do |line, i|
     @errors << "You have new line error on the line #{idx + 1}" if lines[idx - 1] == "\n" && line == "\n"
-    # end
   end
 
   def check_tags(line, _idx)
@@ -76,14 +75,9 @@ class LinterCheck
     end
   end
 
-  # def check_white_spaces
-  #     @lines.each_with_index do |line, i|
-  #         line_arr = line.split("")
-  #         @error_regexp = /^\w+[\s\s]$/
-  #             puts "matching #{i+1}" if @error_regexp.match(line)
-  #         line_arr.each do |char|
+ 
+  def check_variables 
+    @errors << "Error msg" if @variables.repeats?
+  end
 
-  #         end
-  #     end
-  # end
 end
