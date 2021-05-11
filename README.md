@@ -2,9 +2,9 @@
 
 # JavaScript Linters
 
-> Goal of this project is creating linters that can check JavaScript files and provide feedback about errors. The project was built completely by using Ruby.
+> The main goal of this project is to create a linters that can check JavaScript files and provide feedback about errors. The project was built completely by using Ruby.
 
-In this project we are looking for the follwing errors:
+In this project we are looking for the following errors:
 
    - Wrong indentation
    - Trailing spaces   
