@@ -2,7 +2,7 @@
 require_relative "variables"
 require_relative 'parser'
 class LinterCheck
-  attr_reader :file, :buffer, :lines, :errors
+  attr_reader :file, :buffer, :lines, :errors, :tags
 
   def initialize(path)
     @path = path
@@ -12,9 +12,9 @@ class LinterCheck
     @errors = []
     @ind = 0
     @tags = {
-      'curly_braces' => 0,
-      'brackets' => 0,
-      'braces' => 0
+      'brace' => 0,
+      'bracket' => 0,
+      'parentheses' => 0
     }
     run_check
   end
@@ -59,12 +59,12 @@ class LinterCheck
   def check_tags(line, _idx)
     line.split('').each do |char|
       case char
-      when '{' then @tags['curly_braces'] += 1
-      when '}' then @tags['curly_braces'] -= 1
-      when '[' then @tags['brackets'] += 1
-      when ']' then @tags['brackets'] -= 1
-      when '(' then @tags['braces'] += 1
-      when ')' then @tags['braces'] -= 1
+      when '{' then @tags['brace'] += 1
+      when '}' then @tags['brace'] -= 1
+      when '[' then @tags['bracket'] += 1
+      when ']' then @tags['bracket'] -= 1
+      when '(' then @tags['parentheses'] += 1
+      when ')' then @tags['parentheses'] -= 1
       end
     end
   end
