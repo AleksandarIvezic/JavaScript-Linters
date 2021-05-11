@@ -82,4 +82,3 @@ class LinterCheck
     @errors << error_msg if @variables.repeats?
   end
 end
-

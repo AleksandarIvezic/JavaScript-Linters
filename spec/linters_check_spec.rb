@@ -21,7 +21,7 @@ describe LinterCheck do
     end
     context 'when indentation is bigger than it supposed to be' do
       it 'Colects error in error array' do
-        expect(subject.errors).to include("Error line 7: Wrong indentation".colorize(:red))
+        expect(subject.errors).to include('Error line 7: Wrong indentation'.colorize(:red))
       end
     end
   end
@@ -36,7 +36,7 @@ describe LinterCheck do
     end
     context 'when line contains space trailing' do
       it 'Colects space trailing error in error array' do
-        expect(subject.errors).to include("Error line 3: White space at the end of the line".colorize(:red))
+        expect(subject.errors).to include('Error line 3: White space at the end of the line'.colorize(:red))
       end
     end
   end
@@ -51,7 +51,7 @@ describe LinterCheck do
     end
     context 'when there is 2 new lines next to each other' do
       it 'Colects new line error in error array' do
-        expect(subject.errors).to include("Error line 5: New line error  ".colorize(:red))
+        expect(subject.errors).to include('Error line 5: New line error  '.colorize(:red))
       end
     end
   end
