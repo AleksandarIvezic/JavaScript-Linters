@@ -1,5 +1,5 @@
-# require_relative "indentation"
-require_relative "variables"
+require 'colorize'
+require_relative 'variables'
 require_relative 'parser'
 class LinterCheck
   attr_reader :file, :buffer, :lines, :errors, :tags
@@ -21,7 +21,6 @@ class LinterCheck
 
   def run_check
     @lines.each_with_index do |line, i|
-
       check_indent(line, i)
       check_new_lines(line, i)
       check_space_trailing(line, i)
@@ -33,29 +32,30 @@ class LinterCheck
 
   def check_indent(line, idx)
     @line_ind = 0
-    line_arr = line.split('')
-    line_arr.each do |x|
+    line.split('').each do |x|
       break if x != ' '
 
       @line_ind += 1
     end
-    case line[idx - 1]
-    when '{\n' then @ind += 2
-    when '}' then @ind += 2
-    end
-    @errors << "Indentation error on line #{idx + 1}" if @ind != @line_ind
+    @ind += 2 if @lines[idx - 1]&.match("{\n")
+    @ind -= 2 if @lines[idx].match('}')
+
+    error_msg = "Error line #{idx + 1}: Wrong indentation".colorize(:red)
+    @errors << error_msg if @ind != @line_ind
   end
 
-  # check if there is a space before new line
   def check_space_trailing(line, idx)
     line_arr = line.split('')
-    @errors << "You have white space at the end of the line #{idx + 1}" if line_arr[-2] == ' '
+    error_msg = "Error line #{idx + 1}: White space at the end of the line".colorize(:red)
+    @errors << error_msg if line_arr[-2] == ' '
   end
 
   def check_new_lines(line, idx)
-    @errors << "You have new line error on the line #{idx + 1}" if lines[idx - 1] == "\n" && line == "\n"
+    error_msg = "Error line #{idx + 1}: New line error  ".colorize(:red)
+    @errors << error_msg if lines[idx - 1] == "\n" && line == "\n"
   end
 
+  # rubocop: disable Metrics/CyclomaticComplexity
   def check_tags(line, _idx)
     line.split('').each do |char|
       case char
@@ -69,16 +69,17 @@ class LinterCheck
     end
   end
 
+  # rubocop: enable Metrics/CyclomaticComplexity
   def tag_error
     @tags.each do |key, val|
-      @errors << "You are missing closing #{key}" if val.positive?
-      @errors << "You are missing openning #{key}" if val.negative?
+      @errors << "Error: You are missing closing #{key}".colorize(:red) if val.positive?
+      @errors << "Error: You are missing openning #{key}".colorize(:red) if val.negative?
     end
   end
 
- 
-  def check_variables 
-    @errors << "Error: Declaring same variable multiple times" if @variables.repeats?
+  def check_variables
+    error_msg = 'Error: Declaring same variable multiple times'.colorize(:red)
+    @errors << error_msg if @variables.repeats?
   end
-
 end
+
