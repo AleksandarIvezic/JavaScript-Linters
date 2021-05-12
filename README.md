@@ -19,6 +19,11 @@ In this project we are looking for the following errors:
 
 ## Getting Started
 
+### Prerequisites
+   - Installed Ruby
+ 
+### Download the repo
+
 To get a local copy of the repository please run the following commands on your terminal:
 
      cd <folder>
