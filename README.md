@@ -27,7 +27,7 @@ To get a local copy of the repository please run the following commands on your 
 
 To check for errors on a file:
 
-     bin/main js_test.js
+     ruby ./bin/main js_test.js
 
 ### Install RSpec
 To instal RSpec for testing please run the following command on your terminal:
