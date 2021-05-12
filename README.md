@@ -1,65 +1,193 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# JavaScript Linters
 
-> One paragraph statement about the project.
+> The main goal of this project is to create a linters that can check JavaScript files and provide feedback about errors. The project was built completely by using Ruby.
 
-![screenshot](./app_screenshot.png)
+In this project we are looking for the following errors:
 
-Additional description about the project and its features.
+   - Wrong indentation
+   - Trailing spaces   
+   - New line errors
+   - Missing tags - (), [], and {}
+   - Multiple variable declaration
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
-
-## Live Demo
-
-[Live Demo Link](https://livedemo.com)
-
+- Ruby
+- RSpec for Ruby Testing
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
+   - Installed Ruby
+ 
+### Download the repo
 
-### Setup
+To get a local copy of the repository please run the following commands on your terminal:
 
-### Install
+     cd <folder>
 
-### Usage
+     git clone https://github.com/ShinobiWarior/JavaScript-Linters.git
+
+To check for errors on a file:
+
+     ruby ./bin/main js_test.js
+
+### Install RSpec
+To instal RSpec for testing please run the following command on your terminal:
+    
+    gem install rspec
 
 ### Run tests
 
-### Deployment
+To test the code, run  `rspec`  from root of the folder using terminal.
+- Please keep in mind that modifying the js_test.js file will affect the test results.
+
+##  Good and bad code examples
+    
+### Wrong indentation
+~~~javascript
+//Good Code
+
+const person = {
+  firstName: "john",
+  lastName: "doe",
+  age: 30,
+  hobbies: ["music", "movies", "sports"],
+  address: {
+    street: "50 main st",
+    city: "boston",
+    state: "ma"
+  }
+}
+
+//Bad code
+
+const person = {
+    firstName: "john",
+    lastName: "doe",
+    age: 30,
+    hobbies: ["music", "movies", "sports"],
+    address: {
+        street: "50 main st",
+        city: "boston",
+        state: "ma"
+    }
+}
+
+~~~
+
+### Trailing spaces (Pipe `|` stands instead of cursor)
+~~~javascript
+//Good Code
+
+const score = 10;|
+
+//Bad code
+
+const score = 10; |
+
+~~~
+
+### New line errors
+~~~javascript
+//Good Code
+
+const score = 10;
+
+const person = {
+  firstName: "john",
+  lastName: "doe",
+  age: 30,
+  hobbies: ["music", "movies", "sports"],
+  address: {
+    street: "50 main st",
+    city: "boston",
+    state: "ma"
+  }
+}
+
+//Bad code
+
+const score = 10;
 
 
+const person = {
+  firstName: "john",
+  lastName: "doe",
+  age: 30,
+  hobbies: ["music", "movies", "sports"],
+  address: {
+      street: "50 main st",
+      city: "boston",
+      state: "ma"
+  }
+}
 
-## Authors
+~~~
 
-👤 **Author1**
+### Missing tags - (), [], and {}
+~~~javascript
+//Good Code
+
+const person = {
+  firstName: "john",
+  lastName: "doe",
+  age: 30,
+  hobbies: ["music", "movies", "sports"],
+  address: {
+    street: "50 main st",
+    city: "boston",
+    state: "ma"
+  }
+}
+
+//Bad code
+
+const person = {
+  firstName: "john",
+  lastName: "doe",
+  age: 30,
+  hobbies: "music", "movies", "sports"],
+  address: {
+      street: "50 main st",
+      city: "boston",
+      state: "ma"
+    
+}
+
+~~~
+
+### Multiple variable declaration
+~~~javascript
+//Good Code
+
+let age = 30;
+const old = 31;
+const score = 10; 
+
+//Bad code
+
+let age = 30;
+const age = 31;
+const score = 10; 
+~~~
+
+## Author
+
+👤 **Aleksandar Ivezic**
 
 - Twitter: [@AIvezic](https://twitter.com/AIvezic/)
 - LinkedIn: [Aleksandar Ivezic](https://www.linkedin.com/in/aleksandar-ivezi%C4%87-1a6b0391/)
 - GitHub: [@ShinobiWarior](https://github.com/ShinobiWarior/)
 
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/ShinobiWarior/JavaScript-Linters/issues).
 
 ## Show your support
 
@@ -67,10 +195,6 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Project is inspired by [Microverse](https://www.microverse.org/?grsf=w9rx3c)
 
-## 📝 License
 
-This project is [MIT](lic.url) licensed.
