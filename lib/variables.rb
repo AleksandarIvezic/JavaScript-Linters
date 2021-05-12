@@ -9,6 +9,16 @@ class Variables
     create_variables
   end
 
+  def repeats?
+    values = []
+    @all_vars.each_value do |val|
+      values << val
+    end
+    values.uniq.length != values.length
+  end
+
+  private
+
   def add_variable(name, line)
     @all_vars[line] = name if name
   end
@@ -20,13 +30,5 @@ class Variables
         add_variable(arr[indx + 1], idx + 1) if word.match(/const|var|let/)
       end
     end
-  end
-
-  def repeats?
-    values = []
-    @all_vars.each_value do |val|
-      values << val
-    end
-    values.uniq.length != values.length
   end
 end

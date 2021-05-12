@@ -1,6 +1,5 @@
 class Parser
-  attr_reader :path, :lines, :line_arr
-  attr_accessor :line_to_arr
+  attr_reader :path, :lines
 
   def initialize(path)
     @path = path

@@ -2,7 +2,7 @@ require 'colorize'
 require_relative 'variables'
 require_relative 'parser'
 class LinterCheck
-  attr_reader :file, :buffer, :lines, :errors, :tags
+  attr_reader :file, :lines, :errors, :tags
 
   def initialize(path)
     @path = path
@@ -19,17 +19,8 @@ class LinterCheck
     run_check
   end
 
-  def run_check
-    @lines.each_with_index do |line, i|
-      check_indent(line, i)
-      check_new_lines(line, i)
-      check_space_trailing(line, i)
-      check_tags(line, i)
-    end
-    tag_error
-    check_variables
-  end
-
+  private
+  
   def check_indent(line, idx)
     @line_ind = 0
     line.split('').each do |x|
@@ -80,5 +71,16 @@ class LinterCheck
   def check_variables
     error_msg = 'Error: Declaring same variable multiple times'.colorize(:red)
     @errors << error_msg if @variables.repeats?
+  end
+
+  def run_check
+    @lines.each_with_index do |line, i|
+      check_indent(line, i)
+      check_new_lines(line, i)
+      check_space_trailing(line, i)
+      check_tags(line, i)
+    end
+    tag_error
+    check_variables
   end
 end
