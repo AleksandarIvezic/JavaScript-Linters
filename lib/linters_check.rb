@@ -19,8 +19,6 @@ class LinterCheck
     run_check
   end
 
-  private
-  
   def check_indent(line, idx)
     @line_ind = 0
     line.split('').each do |x|
@@ -61,16 +59,19 @@ class LinterCheck
   end
 
   # rubocop: enable Metrics/CyclomaticComplexity
+
+  def check_variables
+    error_msg = 'Error: Declaring same variable multiple times'.colorize(:red)
+    @errors << error_msg if @variables.repeats?
+  end
+
+  private
+
   def tag_error
     @tags.each do |key, val|
       @errors << "Error: You are missing closing #{key}".colorize(:red) if val.positive?
       @errors << "Error: You are missing openning #{key}".colorize(:red) if val.negative?
     end
-  end
-
-  def check_variables
-    error_msg = 'Error: Declaring same variable multiple times'.colorize(:red)
-    @errors << error_msg if @variables.repeats?
   end
 
   def run_check

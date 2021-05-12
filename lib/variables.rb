@@ -17,11 +17,11 @@ class Variables
     values.uniq.length != values.length
   end
 
-  private
-
   def add_variable(name, line)
     @all_vars[line] = name if name
   end
+
+  private
 
   def create_variables
     @lines.each_with_index do |line, idx|
