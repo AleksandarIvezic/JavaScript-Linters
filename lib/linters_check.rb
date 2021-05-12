@@ -27,7 +27,7 @@ class LinterCheck
       @line_ind += 1
     end
     @ind += 2 if @lines[idx - 1]&.match("{\n")
-    @ind -= 2 if @lines[idx].match('}')
+    @ind -= 2 if line.match('}')
 
     error_msg = "Error line #{idx + 1}: Wrong indentation".colorize(:red)
     @errors << error_msg if @ind != @line_ind

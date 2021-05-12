@@ -2,6 +2,7 @@ let age = 30;
 const age = 31;
 const score = 10; 
 
+
 const person = {
     firstName: "john",
     lastName: "doe",
